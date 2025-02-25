@@ -19,6 +19,7 @@
     },
     "require": {
         "symfony/orm-pack": "*",
-        "gedmo/doctrine-extensions": "*"
+        "symfony/serializer-pack": "*",
+        "stof/doctrine-extensions-bundle": "*"
     }
 }

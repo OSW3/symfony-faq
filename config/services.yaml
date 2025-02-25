@@ -8,3 +8,6 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
+
+    OSW3\Faq\EventSubscriber\TableNameSubscriber:
+        tags: [{ name: doctrine.event_listener, event: loadClassMetadata }]
