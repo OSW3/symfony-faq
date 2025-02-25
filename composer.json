@@ -16,5 +16,9 @@
         "psr-4": {
             "OSW3\\Faq\\": "src/"
         }
+    },
+    "require": {
+        "symfony/orm-pack": "*",
+        "gedmo/doctrine-extensions": "*"
     }
 }
