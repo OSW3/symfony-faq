@@ -18,7 +18,9 @@
         }
     },
     "require": {
+        "symfony/form": "*",
         "symfony/orm-pack": "*",
+        "symfony/validator": "*",
         "symfony/serializer-pack": "*",
         "stof/doctrine-extensions-bundle": "*"
     }

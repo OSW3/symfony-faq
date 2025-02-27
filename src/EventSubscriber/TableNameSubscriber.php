@@ -34,7 +34,7 @@ class TableNameSubscriber implements EventSubscriber
     {
         $classMetadata = $args->getClassMetadata();
         $entityClass   = $classMetadata->getName();
-        $tableNames    = $this->config['tables_name'];
+        $tableNames    = $this->config['tables'];
 
         $tableName = match($entityClass) {
             Faq::class         => $tableNames['faq'],

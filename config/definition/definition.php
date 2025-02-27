@@ -4,7 +4,7 @@ return static function($definition)
 {
     $definition->rootNode()->children()
 
-        ->arrayNode('tables_name')
+        ->arrayNode('tables')
             ->addDefaultsIfNotSet()
             ->children()
             
@@ -31,6 +31,34 @@ return static function($definition)
                 ->scalarNode('tag')
                     ->info("The table name of the entity Tag")
                     ->defaultValue('faq_tag')
+                ->end()
+
+            ->end()
+        ->end()
+
+        ->arrayNode('form')
+            ->addDefaultsIfNotSet()
+            ->children()
+
+                ->arrayNode('categories')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+
+                    ->end()
+                ->end()
+
+                ->arrayNode('tags')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+
+                    ->end()
+                ->end()
+
+                ->arrayNode('questions')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+
+                    ->end()
                 ->end()
 
             ->end()
