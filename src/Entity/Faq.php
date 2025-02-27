@@ -44,8 +44,7 @@ class Faq
     /**
      * @var Collection<int, Translation>
      */
-
-    #[ORM\OneToMany(targetEntity: Translation::class, mappedBy: 'faq', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Translation::class, mappedBy: 'faq', orphanRemoval: true, cascade: ['persist'])]
     private Collection $translations;
 
     /**

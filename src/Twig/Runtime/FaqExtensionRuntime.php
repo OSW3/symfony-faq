@@ -22,17 +22,15 @@ class FaqExtensionRuntime implements RuntimeExtensionInterface
         $results = [];
 
         foreach ($entities as $entity) {
-
             $id       = $entity->getId();
             $category = $entity->getCategory()->getName();
             $tags     = $entity->getTags()->map(fn($tag) => $tag->getName())->toArray();
-
+            
             $votes     = $entity->getVotes();
-            $question = null;
-            $answer   = null;
+            $question  = null;
+            $answer    = null;
             $upvotes   = 0;
             $downvotes = 0;
-
 
             foreach ($votes as $vote) {
                 if ($vote->getVote() == VoteType::UPVOTE) {
@@ -42,33 +40,23 @@ class FaqExtensionRuntime implements RuntimeExtensionInterface
                     $downvotes++;
                 }
             }
-            // $questions = [];
 
             foreach ($entity->getTranslations() as $translation) {
-
-                // if ($language == null) {
-                //     array_push($questions, [
-                //         'language' => $translation->getLanguage(),
-                //         'question' => $translation->getQuestion(),
-                //         'answer'   => $translation->getAnswer(),
-                //     ]);
-                // }
-                // else 
                 if ($language == $translation->getLanguage()) {
                     $question = $translation->getQuestion();
                     $answer   = $translation->getAnswer();
+
+                    array_push($results, [
+                        'id'        => $id,
+                        'category'  => $category,
+                        'tags'      => $tags,
+                        'question'  => $question,
+                        'answer'    => $answer,
+                        'upvotes'   => $upvotes,
+                        'downvotes' => $downvotes,
+                    ]);
                 }
             }
-
-            array_push($results, [
-                'id'        => $id,
-                'category'  => $category,
-                'tags'      => $tags,
-                'question'  => $question,
-                'answer'    => $answer,
-                'upvotes'   => $upvotes,
-                'downvotes' => $downvotes,
-            ]);
         }
         
         return $results;
